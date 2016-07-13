@@ -16,8 +16,8 @@ Including another URLconf
 from django.conf.urls import url
 from . import views
 urlpatterns = [
-    url(r'^$', views.blog_posts, name='blog_posts'),
-    url(r'^(?P<id>\d+)/$', views.post_detail),
+    url(r'^$', views.blog_posts, name='home'),
+    url(r'^post/(?P<id>\d+)/$', views.post_detail, name='view_post'),
     url(r'^post/new/$', views.new_post, name='new_post'),
-    url(r'^(?P<id>\d+)/edit$',views.edit_post),
+    url(r'^post/(?P<id>\d+)/edit$',views.edit_post, name='edit_post'),
 ]
