@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="btn-group">
+    <button type="button" class="navbar-toggle collapsed btn btn-info" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-left">
+        <li><a href="#">Links</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href='{% url 'popular' %}'>5 most popular posts</a></li>
+            <li><a href='{% url 'blog'%}'>Default view</a></li>
+
+            <li role="separator" class="divider"></li>
+            <li><a href='{% url 'new_post' %}'>New Post</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    </div>
+
+        {% for post in posts %}
+            <div class="row">
+                <hr>
+                <div class="col-md-2 col-sm-3 text-center">
+                    <a class="story-img" href="#">
+                        <img src="http://placehold.it/100" style="width:100px" ;
+                             height: 100px; background-color: #12ABB2; color: #fff;" class="img-circle">
+                    </a>
+                </div>
+                <div class="col-md-10 col-sm-9">
+                    <h3>{{ post.title }}</h3>
+                    <div class="row">
+                        <div class="col-xs-9">
+            <p>{{ post.content|truncatewords:30 }}</p>
+            <p>
+                <button class="btn btn-default" onclick="location.href='{% url 'post_detail' post.id %}'">Read More
+                </button>
+
+            </p>
+
+            <p>{{ post.published_date }} | <strong>Views</strong> {{ post.views }} | <strong>Tag</strong> {{ post.tag }}
+            </p>
+            </div>
+            </div>
+
+            </div>
+
+            </div>
+        {% endfor %}
+{% endblock %}

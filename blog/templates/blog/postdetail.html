@@ -21,7 +21,7 @@
                         {% endif %}
                     </figure>
                         <p>{{ post.content | linebreaks }}</p>
-                        <p><button class="btn btn-default" onclick="location.href='{% url 'home'%}'">Back to Blog</button>
+                        <p><button class="btn btn-default" onclick="location.href='/blog'">Back to Blog</button>
                         <button class="btn btn-default" onclick="location.href='{% url 'edit_post' post.id %}'">Edit</button></p>
                         <p>{{ post.published_date }} | <strong>Views</strong> {{ post.views }} | <strong>Tag</strong> {{ post.tag }}</p>
                         <p>
